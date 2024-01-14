@@ -1,0 +1,1 @@
+I have made this todolist using react-native and expo. I have used interactive UI and and it is easy to use. We can add our task to by clicking on add new task and delete the task  on clicking on that task.
