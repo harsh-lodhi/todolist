@@ -1,51 +1,78 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View, Button } from "react-native";
 
 const Tasks = (props) => {
+  const { item, taskItems, index, setTaskItems } = props;
+
+  const deleteItem = () => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy);
+  };
+
+  const completeTask = () => {
+    let itemsCopy = [...taskItems];
+    itemsCopy[index].completed = !itemsCopy[index].completed;
+    setTaskItems(itemsCopy);
+  };
+
   return (
     <View style={styles.item}>
-        <View style={styles.itemLeft}>
-            <View style={styles.square}></View>
-            <Text style={styles.itemText}>{props.text}</Text>
+      <View style={styles.itemLeft}>
+        <View style={styles.square}></View>
+        <Text style={styles.itemText}>{item.title}</Text>
+        
+      </View>
+      <View style={styles.icon}>
+      <Text>{item.completed ? "✓" : "x"}</Text>
+        <View style={styles.buttonContainer}>
+          <Button title="Delete" onPress={deleteItem} />
         </View>
-        <View style={styles.circular}></View>
+        <View style={styles.buttonContainer}>
+        <Button title={item.completed ? "Undone" : "Done"} onPress={completeTask} />
+
+        </View>
+      </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-    item: {
-        backgroundColor: '#FFF',
-        padding: 15,
-        borderRadius: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-    },
-    itemLeft: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-    },
-    square: {
-        width: 24,
-        height: 24,
-        backgroundColor: '#55BCF6',
-        opacity: 0.4,
-        borderRadius: 5,
-        marginRight: 15,
-    },
-    itemText: {
-        maxWidth: '80%',
-    },
-    circular: {
-        width: 12,
-        height: 12,
-        borderColor: '#55BCF6',
-        borderWidth: 2,
-        borderRadius: 5,
-    }
+  item: {
+    backgroundColor: "#FFF",
+    padding: 15,
+    borderRadius: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  itemLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexWrap: "wrap",
+    maxWidth: "65%", 
+  },
+  square: {
+    width: 24,
+    height: 24,
+    backgroundColor: "#55BCF6",
+    opacity: 0.4,
+    borderRadius: 5,
+    marginRight: 15,
+  },
+  itemText: {
+    maxWidth: "80%", 
+  },
+  icon: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end", 
+    width: "25%", 
+  },
+  buttonContainer: {
+    marginLeft: 10,
+  },
 });
 
-export default Tasks
+export default Tasks;
