@@ -52,14 +52,14 @@ export default function TaskPage() {
         <View style={styles.items}>
           {/* Tasks Component */}
           {filteredTasks.map((item, index) => (
-            <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+            <View key={index}>
               <Tasks
                 item={item}
                 taskItems={taskItems}
                 index={index}
                 setTaskItems={setTaskItems}
               />
-            </TouchableOpacity>
+            </View>
           ))}
         </View>
       </View>

@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     flexWrap: "wrap",
-    maxWidth: "65%", 
+    maxWidth: "70%", 
   },
   square: {
     width: 24,
