@@ -30,7 +30,7 @@ export default function TaskPage() {
     setTaskItems(itemsCopy);
   };
 
-  // Filter tasks based on the search term
+  
   const filteredTasks = taskItems.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
